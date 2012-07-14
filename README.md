@@ -50,6 +50,7 @@ There following options can be passed to Guard::Handlebars:
     :bare => true                       # Compile without the top-level function wrapper, default: false
     :shallow => true                    # Do not create nested output directories, default: false
     :hide_success => true               # Disable successful compilation messages, default: false
+    :emberjs => true                    # Populate Ember.TEMPLATES[], default: false
 
 ### Nested directories
 
