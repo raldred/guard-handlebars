@@ -1,3 +1,5 @@
+require 'active_support/core_ext/string'
+
 module Guard
   class Handlebars
 
@@ -12,19 +14,24 @@ module Guard
       attr_reader :source
 
       def initialize(path, source, options = {})
-        @path, @source = path, source
+        @path, @source, @options = path, source, options
       end
 
       def compile
         # TODO Do not assume require.js, but make it possible
-        compiled = "(function() {"
-        compiled << "\n  define(['handlebars'], function() {"
-        compiled << "\n    var #{function} = Handlebars.compile('#{escape(source)}');"
-        compiled << "\n    Handlebars.registerPartial('#{function}', #{function});" if partial?
-        compiled << "\n    return #{function};"
-        compiled << "\n  });"
-        compiled << "\n}).call(this);"
-
+        
+        if @options[:emberjs]
+          compiled = "Ember.TEMPLATES['#{function.camelize(:lower)}'] = Handlebars.compile('#{escape(source)}');"
+        else
+          compiled = "(function() {"
+          compiled << "\n  define(['handlebars'], function() {"
+          compiled << "\n    var #{function} = Handlebars.compile('#{escape(source)}');"
+          compiled << "\n    Handlebars.registerPartial('#{function}', #{function});" if partial?
+          compiled << "\n    return #{function};"
+          compiled << "\n  });"
+          compiled << "\n}).call(this);"
+        end
+        
         compiled
       end
 

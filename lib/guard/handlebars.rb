@@ -19,6 +19,7 @@ module Guard
           :shallow => false,
           :hide_success => false,
           :compiled_name => 'compiled.js',
+          :emberjs => false,
       }.merge(options))
     end
 
