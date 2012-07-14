@@ -21,7 +21,7 @@ module Guard
         # TODO Do not assume require.js, but make it possible
         
         if @options[:emberjs]
-          compiled = "Ember.TEMPLATES['#{function.camelize(:lower)}'] = Handlebars.compile('#{escape(source)}');"
+          compiled = "Ember.TEMPLATES['#{function.camelize(:lower)}'] = Ember.Handlebars.compile('#{escape(source)}');"
         else
           compiled = "(function() {"
           compiled << "\n  define(['handlebars'], function() {"
