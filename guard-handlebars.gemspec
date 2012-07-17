@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = 'guard-handlebars'
 
   s.add_dependency 'guard', '>= 0.4'
+  s.add_dependency 'tzinfo', '>= 0.3'
   s.add_dependency 'activesupport', '>= 2.0'
 
   s.add_development_dependency 'bundler',     '~> 1.0'
