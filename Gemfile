@@ -3,8 +3,6 @@ source 'http://rubygems.org'
 # Specify your gem's dependencies in guard-handlebars.gemspec
 gemspec
 gem 'rake'
-gem 'tzinfo'
-gem 'activesupport'
 
 require 'rbconfig'
 
