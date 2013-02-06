@@ -42,7 +42,8 @@ module Guard
       end
 
       def name
-        @path.split('/').last
+        # @path.split('/').last
+        @path
       end
 
       def partial?
