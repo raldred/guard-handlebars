@@ -19,9 +19,19 @@ module Guard
           :shallow => false,
           :hide_success => false,
           :compiled_name => 'compiled.js',
+          :emberjs => false,
+          :all_on_start => false,
       }.merge(options))
     end
 
+    # Gets called once when Guard starts.
+    #
+    # @raise [:task_has_failed] when stop has failed
+    #
+    def start
+      run_all if options[:all_on_start]
+    end
+    
     def run_all
       run_on_change(Watcher.match_files(self, Dir.glob(File.join('**', '*.handlebars'))))
     end
